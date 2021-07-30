@@ -21,7 +21,7 @@
         <?php
             $queryBanner = mysqli_query($connect, "SELECT *FROM banner WHERE status='on' ORDER BY banner_id DESC LIMIT 3");
             while($rowBanner = mysqli_fetch_assoc($queryBanner)){
-                echo "<img src='".BASE_URL."images/slide/$rowBanner[gambar]' />";
+                echo "<a href='".BASE_URL."$rowBanner[link]'><img src='".BASE_URL."images/slide/$rowBanner[gambar]' /></a>";
             }
         ?>
     </div>
