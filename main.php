@@ -2,8 +2,7 @@
     <div id="menu-kategori">
         <ul>
             <?php
-
-                $kategori_id = $_GET['kategori_id'];
+                
                 $query = mysqli_query($connect, "SELECT *FROM kategori WHERE status='on'");
                 while($row = mysqli_fetch_assoc($query)){
                     if($kategori_id == $row['kategori_id']){
