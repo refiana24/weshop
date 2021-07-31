@@ -1,19 +1,7 @@
 <div id="kiri">
-    <div id="menu-kategori">
-        <ul>
-            <?php
-                
-                $query = mysqli_query($connect, "SELECT *FROM kategori WHERE status='on'");
-                while($row = mysqli_fetch_assoc($query)){
-                    if($kategori_id == $row['kategori_id']){
-                        echo "<li><a href='".BASE_URL."index.php?kategori_id=$row[kategori_id]' class='active'>$row[kategori]</a></li>";
-                    }else{
-                        echo "<li><a href='".BASE_URL."index.php?kategori_id=$row[kategori_id]'>$row[kategori]</a></li>";
-                    }         
-                }
-            ?>
-        </ul>
-    </div>
+    <?php
+        echo kategori($kategori_id);
+    ?>
 </div>
 
 <div id="kanan">
@@ -46,12 +34,12 @@
                     
                     echo "<li $style>
                             <p class='price'>".rupiah($row['harga'])."</p>
-                            <a href='".BASE_URL."index.php?=detail&barang_id=$row[barang_id]'>
+                            <a href='".BASE_URL."index.php?page=detail&barang_id=$row[barang_id]'>
                                 <img src='".BASE_URL."images/barang/$row[gambar]' />
                             </a>
 
                             <div class='keterangan-gambar'>
-                                <p><a href='".BASE_URL."index.php?=detail&barang_id=$row[barang_id]'>$row[nama_barang]</a></p>
+                                <p><a href='".BASE_URL."index.php?page=detail&barang_id=$row[barang_id]'>$row[nama_barang]</a></p>
                                 <span>Stock : $row[stok]</span>
                             </div>
 
