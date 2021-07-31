@@ -39,6 +39,7 @@ body {
     background: orange;
     border-radius: 3px;
     padding: 2px 10px;
+    text-decoration: none;
 }
 
 #container #header #menu #button-keranjang img {
@@ -333,4 +334,12 @@ body {
 
 #detail-barang #keterangan {
     margin: 20px 0px;
+}
+
+.total-barang {
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    text-decoration: none;
 }
