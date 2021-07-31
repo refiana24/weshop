@@ -147,6 +147,10 @@ body {
     border-collapse: collapse;
 }
 
+.table-list tr {
+    border-bottom: 1px solid #1e5474;
+}
+
 .table-list tr.baris-title {
     background: #E6E6E6;
 }
@@ -342,4 +346,9 @@ body {
     font-weight: bold;
     vertical-align: top;
     text-decoration: none;
+}
+
+.update-quantity {
+    width: 30px;
+    text-align: center;
 }
