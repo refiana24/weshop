@@ -1,5 +1,5 @@
 <?php
-    
+
     session_start();
     include_once("function/helper.php");
     include_once("function/koneksi.php");
@@ -10,7 +10,7 @@
     $row = mysqli_fetch_assoc($query);
 
     //array multidimensional
-    $keranjang ["barang_id"] = array("nama_barang" => $row["nama_barang"],
+    $keranjang [$barang_id] = array("nama_barang" => $row["nama_barang"],
                                      "gambar" => $row["gambar"],
                                      "harga" => $row["harga"],
                                      "quantity" => 1);
