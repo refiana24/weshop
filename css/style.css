@@ -364,3 +364,21 @@ body {
     text-decoration: none;
     color: #1e5474;
 }
+
+.frame-button-keranjang a {
+    background: #1e5474;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 7px 20px;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.frame-button-keranjang #lanjut-belanja {
+    float: left;
+}
+
+.frame-button-keranjang #lanjut-pemesanan {
+    float: right;
+}

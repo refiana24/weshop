@@ -39,6 +39,11 @@
                 <td colspan='5px' class='kanan'><b>Sub Total</b></td>
                 <td class='kanan'><b>".rupiah($subtotal)."</b></td>";
         echo "</table>";
+
+        echo "<div class='frame-button-keranjang'>
+                <a id='lanjut-belanja' href='".BASE_URL."index.php'>Lanjut Belanja</a>
+                <a id='lanjut-pemesanan' href='".BASE_URL."index.php?page=data_pemesan'>Lanjut Pemesanan</a>
+              </div>";
     }
 ?>
 
