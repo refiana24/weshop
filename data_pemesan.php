@@ -43,8 +43,8 @@
 
             <div class="element-form">
                 <label>Kota</label>
-                    <select name="kota">
                     <span>
+                    <select name="kota">
                         <?php
                             $query = mysqli_query($connect, "SELECT *FROM kota");
                                 while ($row = mysqli_fetch_assoc($query)){
