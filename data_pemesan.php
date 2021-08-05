@@ -1,23 +1,15 @@
 <?php
+    
+    if($user_id == false);
+    $_SESSION["proses_pesanan"] = true;
 
-    $pesanan_id = isset($_GET['pesanan_id']) ? $_GET['pesanan_id'] : false;
-    //$kota_id = "";
-    //$user_id = "";
-    //$nama_penerima = "";
-    //$nomor_telepon = "";
-    //$alamat = "";
-    //$tgl_pemesanan = "";
-    //$status = "";
-    //$button = "";
-
-
-    //$kota_id = $_POST['kota_id'];
-    //$user_id = $_POST['user_id'];
+    header("location:".BASE_URL."index.php?page=login");
+    exit;
 
 ?>
 
 <div id='frame-data-pengiriman'>
-    <h3>Data Pengiriman barang</h3>
+    <h3 class="label">Data Pengiriman barang</h3>
     <div id='frame-form-pengiriman'>
         <form action="<?php echo BASE_URL."proses_pemesanan.php"; ?>" method="POST">
             <div class="element-form">
@@ -48,7 +40,7 @@
                         <?php
                             $query = mysqli_query($connect, "SELECT *FROM kota");
                                 while ($row = mysqli_fetch_assoc($query)){
-                                    echo "<option value='$row [kota_id]'>$row[kota]</option>";
+                                    echo "<option value='$row [kota_id]'>$row[kota] ".rupiah($row[tarif])."</option>";
                                 }
                         ?>
                     </select>
@@ -64,10 +56,8 @@
     </div>
 </div>
 
-<hr>
-
 <div id="frame-data-detail">
-    <h3>Detail Order</h3>
+    <h3 class="label">Detail Order</h3>
     <div id="frame-detail-order">
         <table class="table-list">
             <tr>
