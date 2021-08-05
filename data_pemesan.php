@@ -78,12 +78,15 @@
             
             <?php
 
+                $subtotal = 0;
+
                 foreach($keranjang AS $key => $value){
                     $barang_id = $key;
                     $nama_barang = $value['nama_barang'];
                     $harga = $value['harga'];
                     $quantity = $value['quantity'];
                     $total = $quantity * $harga;
+                    $subtotal = $subtotal + $total;
 
                     echo "<tr>
                             <td class='kiri'>$nama_barang</td>
@@ -91,6 +94,11 @@
                             <td class='kanan'>".rupiah($total)."</td>
                             </tr>";
                 }
+
+                    echo "<tr>
+                            <td class='kanan' colspan='2'><b>Sub Total</b></td>
+                            <td class='kanan'><b>".rupiah($subtotal)."</b></td>
+                          </tr>";
             ?>
         </table>
             
