@@ -63,3 +63,36 @@
         </form>
     </div>
 </div>
+
+<hr>
+
+<div id="frame-data-detail">
+    <h3>Detail Order</h3>
+    <div id="frame-detail-order">
+        <table class="table-list">
+            <tr>
+                <th class="kiri">Nama Barang</th>
+                <th class="tengah">Qty</th>
+                <th class="kanan">Total</th>
+            </tr>
+            
+            <?php
+
+                foreach($keranjang AS $key => $value){
+                    $barang_id = $key;
+                    $nama_barang = $value['nama_barang'];
+                    $harga = $value['harga'];
+                    $quantity = $value['quantity'];
+                    $total = $quantity * $harga;
+
+                    echo "<tr>
+                            <td class='kiri'>$nama_barang</td>
+                            <td class='tengah'>$quantity</td>
+                            <td class='kanan'>".rupiah($total)."</td>
+                            </tr>";
+                }
+            ?>
+        </table>
+            
+    </div>
+</div>
