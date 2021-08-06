@@ -17,21 +17,21 @@
             <div class="element-form">
                 <label>Nama Penerima</label>
                     <span>
-                        <input type="text" name="nama_penerima" value="" />
+                        <input type="text" name="nama_penerima" />
                     </span>
             </div>
 
             <div class="element-form">
                 <label>Nomor Telepon</label>
                     <span>
-                        <input type="text" name="nomor_telepon" value="" />
+                        <input type="text" name="nomor_telepon" />
                     </span>
             </div>
 
             <div class="element-form">
                 <label>Alamat Pengiriman</label>
                     <span>
-                        <textarea name="alamat" value=""> </textarea>
+                        <textarea name="alamat"> </textarea>
                     </span>
             </div>
 
@@ -51,7 +51,7 @@
             
             <div class="element-form">
                 <span>
-                    <input type="submit"  value="submit" />
+                    <input type="submit" value="submit" />
                 </span>
             </div>
         </form>
