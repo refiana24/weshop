@@ -40,9 +40,9 @@
                     <span>
                     <select name="kota">
                         <?php
-                            $query = mysqli_query($connect, "SELECT *FROM kota");
+                            $query = mysqli_query($connect, "SELECT * FROM kota");
                                 while ($row = mysqli_fetch_assoc($query)){
-                                    echo "<option value='$row [kota_id]'>$row[kota] ".rupiah($row[tarif])."</option>";
+                                    echo "<option value='".$row["kota_id"]."'>".$row["kota"]." ".rupiah($row["tarif"])."</option>";
                                 }
                         ?>
                     </select>

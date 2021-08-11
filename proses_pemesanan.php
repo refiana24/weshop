@@ -13,22 +13,27 @@
     $user_id = $_SESSION['user_id'];
     $waktu = date("Y-m-d H:i:s");
 
-    $query = mysqli_query($connect, "INSERT INTO pesanan(nama_penerima, user_id, nomor_telepon, alamat, kota_id, tanggal_pemesanan, status)
-                                                    VALUES('$nama_penerima','$user_id','$nomor_telepon','$alamat','$kota','$waktu','0')");
+    $query = mysqli_query($connect, "INSERT INTO pesanan(nama_penerima, user_id, nomor_telepon, alamat, kota_id, tanggal_pemesanan, status) VALUES('$nama_penerima','$user_id','$nomor_telepon','$alamat','$kota','$waktu','0')");
 
         if($query){
             $last_pesanan_id = mysqli_insert_id($connect);
 
             $keranjang = $_SESSION['keranjang'];
-
+            $array = '';
+            $counter = 0;
             foreach($keranjang AS $key => $value){
+                ++$counter;
                 $barang_id = $key;
                 $quantity = $value['quantity'];
                 $harga = $value['harga'];
+                if($counter == count($keranjang)){
+                    $array .= "('$last_pesanan_id','$barang_id','$quantity','$harga')";
+                }else{
+                    $array .= "('$last_pesanan_id','$barang_id','$quantity','$harga'),";
+                }
 
-                mysqli_query($connect, "INSERT INTO pesanan_detail(pesanan_id, barang_id, quantity, harga)
-                                                    VALUES('$last_pesanan_id','$barang_id','$quantity','$harga')");
             }
+            mysqli_query($connect, "INSERT INTO pesanan_detail(pesanan_id, barang_id, quantity, harga) VALUES ".$array);
 
             unset($_SESSION["keranjang"]);
             
