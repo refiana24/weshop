@@ -4,7 +4,7 @@
 	
 	$query = mysqli_query($connect, "SELECT pesanan.nama_penerima, pesanan.nomor_telepon, pesanan.alamat, pesanan.tanggal_pemesanan, user.nama, kota.kota, kota.tarif FROM pesanan JOIN user ON pesanan.user_id=user.user_id JOIN kota ON kota.kota_id=pesanan.kota_id WHERE pesanan.pesanan_id='$pesanan_id'");
 	
-	$row=mysqli_fetch_assoc($query);
+	$row = mysqli_fetch_assoc($query);
 	
 	$tanggal_pemesanan = $row['tanggal_pemesanan'];
 	$nama_penerima = $row['nama_penerima'];
@@ -19,7 +19,7 @@
 <div id="frame-faktur">
 
 	<h3><center>Detail Pesanan</center></h3>
-	
+
 	<hr/>
 	
 	<table>
@@ -55,4 +55,60 @@
 			<td><?php echo $tanggal_pemesanan; ?></td>
 		</tr>		
 	</table>	
+</div>
+
+<table class="table-list">
+	<tr class="baris-title">
+		<th class="no"> No </th>
+		<th class="kiri"> Nama Barang </th>
+		<th class="tengah"> Qty </th>
+		<th class="kanan">Harga Satuan</th>
+		<th class="kanan">Total</th>
+	</tr>
+
+	<?php
+	
+		$queryDetail = mysqli_query($connect, "SELECT pesanan_detail.*, barang.nama_barang FROM pesanan_detail JOIN barang ON pesanan_detail.barang_id=barang.barang_id WHERE pesanan_detail.pesanan_id='$pesanan_id'");
+
+		$no = 1;
+		$subtotal = 0;
+
+		while($rowDetail = mysqli_fetch_assoc($queryDetail)){
+
+			$total = $rowDetail["quantity"] * $rowDetail["harga"];
+			$subtotal = $subtotal + $total;
+
+			echo "<tr>
+					<td class='no'>$no</td>
+					<td class='kiri'>$rowDetail[nama_barang]</td>
+					<td class='tengah'>$rowDetail[quantity]</td>
+					<td class='kanan'>".rupiah($rowDetail["harga"])."</td>
+					<td class='kanan'>".rupiah($total)."</td>
+			
+			</tr>";
+
+			$no++;
+
+			$subtotal = $subtotal + $tarif;
+		}
+
+	?>
+
+ 		<tr>
+            <td class='kanan' colspan='4'><b>Biaya Pengiriman</b></td>
+            <td class='kanan'><?php echo rupiah($tarif) ?></td>
+        </tr>
+
+		<tr>
+            <td class='kanan' colspan='4'><b>Sub Total</b></td>
+            <td class='kanan'><b><?php echo rupiah($subtotal) ?></b></td>
+        </tr>
+</table>
+
+<div id="frame-keterangan-pembayaran">
+	<p>Silahkan Lakukan pembayaran ke Bank XYZ<br/>
+		   Nomor Account : 0000-9999-8888 (A/N Weshop).<br/>
+		   Setelah melakukan pembayaran silahkan lakukan konfirmasi pembayaran 
+		   <a href="<?php echo BASE_URL."index.php?page=myprofile&module=pesanan&action=konfirmasi_pembayaran&pesanan_id=$pesanan_id"?>">Disini</a>.
+	</p>
 </div>
