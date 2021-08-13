@@ -1,6 +1,11 @@
 <?php
 	define("BASE_URL", "http://localhost/weshop/");
 
+	$ArraystatusPesanan[0] = 'Menunggu Pembayaran';
+	$ArraystatusPesanan[1] = 'Menunggu di Validasi';
+	$ArraystatusPesanan[2] = 'Lunas';
+	$ArraystatusPesanan[3] = 'Pembayaran di Tolak';
+
 	function rupiah ($string = 0){
 		$string = "Rp.".number_format($string);
 		return $string;
