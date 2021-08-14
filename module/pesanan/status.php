@@ -7,7 +7,7 @@
     $status = $row['status'];
 ?>
 
-<form action="<?php echo BASE_URL."module/pesanan/action.php?pesanan_id=$pesanan_id"; ?>">
+<form action="<?php echo BASE_URL."module/pesanan/action.php?pesanan_id=$pesanan_id"; ?>" method="POST">
     <div class='element-form'>
         <label>Pesanan ID</label>
         <span>
